@@ -10,6 +10,7 @@ define('CONFIG', ROOT.DS.'config');
 define('SYM', '$this');
 date_default_timezone_set('Europe/Paris');
 
+
 require(CORE.DS.'includes.php');
 
 if (isset($_GET['url']))

@@ -72,7 +72,7 @@ class Trck extends Controller
     private function sym($e)
     {
       $url = 'https://scrapyomama.herokuapp.com/'.$e[0].'/'.$e[1];
-      foreach($e[3] as $k=>$v)
+      foreach($e[2] as $k=>$v)
       {
         $url .= '/'.$v;
       }
@@ -80,13 +80,10 @@ class Trck extends Controller
 
       curl_setopt($curl, CURLOPT_URL, $url);
       curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
 
       $res = curl_exec($curl);
       curl_close($curl);
-      if (!$res)
-          print_r("No curl result, proxy was probably locked or wrong.\n");
-          print_r("--".$res."--");
-      return ($res);
+      
     }
 }
