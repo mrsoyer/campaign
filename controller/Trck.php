@@ -39,7 +39,10 @@ class Trck extends Controller
 
     public function imgSrc($e)
     {
-
+        $remoteImage = base64_decode(str_pad(strtr($e[0], '-_', '+/'), strlen($e[0]) % 4, '=', STR_PAD_RIGHT));
+        $imginfo = getimagesize($remoteImage);
+        header("Content-type: {$imginfo['mime']}");
+        readfile($remoteImage);
     }
 
     public function kit($e)
@@ -84,6 +87,6 @@ class Trck extends Controller
 
       $res = curl_exec($curl);
       curl_close($curl);
-      
+
     }
 }
